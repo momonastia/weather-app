@@ -1,0 +1,485 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  transition: all 1s;
+}
+body {
+  display: flex;
+  justify-content: center;
+  /*  min-height: 100vh; */
+}
+
+.video-background {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.video-background video {
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+
+.rain-background,
+.clear-background,
+.cloud-background,
+.snow-background,
+.haze-background,
+.storm-background {
+  display: none;
+}
+
+.rain-background.active,
+.clear-background.active,
+.cloud-background.active,
+.snow-background.active,
+.haze-background.active,
+.storm-background.active {
+  display: block;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+#select-location {
+  height: 50px;
+  width: 230px;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-top: 5px;
+  max-height: 205px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: rgb(53, 53, 53);
+  scrollbar-color: dark;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+  background: rgb(233, 233, 233);
+}
+
+.option {
+  color: rgb(53, 53, 53);
+  background: transparent;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+.wrapper {
+  position: relative;
+  top: 0px;
+  width: 230px;
+  opacity: 0.8;
+}
+
+.wrapper header {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 16px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+header i {
+  font-size: 0em;
+  cursor: pointer;
+  margin-right: 8px;
+  padding-bottom: -28px;
+}
+.wrapper.active header i {
+  display: none;
+  margin-left: 5px;
+  font-size: 18px;
+}
+.wrapper .input-part {
+  margin: 20px 25px 30px;
+}
+.wrapper.active .input-part {
+  display: none;
+}
+.input-part .info-txt {
+  display: none;
+  font-size: 17px;
+  text-align: center;
+  padding: 12px 10px;
+  border-radius: 7px;
+  margin-bottom: 15px;
+}
+.input-part .info-txt.error {
+  display: block;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+.input-part .info-txt.pending {
+  color: #0c5460;
+  display: block;
+  background: #d1ecf1;
+  border: 1px solid #bee5eb;
+}
+.input-part :where(input, button) {
+  width: 100%;
+  height: 55px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  border-radius: 7px;
+}
+.input-part input {
+  text-align: center;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+}
+.input-part input:is(:focus, :valid) {
+  border: 2px solid #43affc;
+}
+.input-part input::placeholder {
+  color: #bfbfbf;
+}
+
+.input-part button {
+  color: #fff;
+  cursor: pointer;
+  background: #43affc;
+  transition: 0.3s ease;
+}
+.input-part button:hover {
+  background: #addafb;
+}
+
+.wrapper .weather-part {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: -50px;
+}
+.wrapper.active .weather-part {
+  display: flex;
+}
+.weather-part img {
+  max-width: 125px;
+}
+.weather-part .temp {
+  display: flex;
+  font-weight: 500;
+  font-size: 72px;
+}
+.weather-part .temp .numb {
+  font-weight: 600;
+}
+.weather-part .temp .deg {
+  font-size: 40px;
+  display: block;
+  margin: 10px 5px 0 0;
+}
+.weather-part .weather {
+  font-size: 21px;
+  text-align: center;
+  margin: -5px 20px 15px;
+}
+.weather-part .location {
+  display: flex;
+  font-size: 19px;
+  padding: 0 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+.location i {
+  font-size: 22px;
+  margin: 4px 5px 0 0;
+}
+.weather-part .bottom-details {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  overflow: visible;
+}
+.bottom-details .column {
+  display: flex;
+  width: 100px;
+  padding: 15px 0;
+  align-items: center;
+  justify-content: center;
+}
+.column i {
+  color: #5dbbff;
+  font-size: 40px;
+}
+
+.column .details {
+  margin-left: 3px;
+}
+.details .temp,
+.humidity span {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: -3px;
+}
+.details .temp .deg {
+  margin: 0;
+  font-size: 17px;
+  padding: 0 2px 0 1px;
+}
+.column .details p {
+  font-size: 14px;
+  margin-top: -6px;
+}
+.humidity i {
+  font-size: 37px;
+}
+
+.main.active {
+  transform: translateX(0);
+  height: 500px;
+  width: 200px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.9;
+  height: 50vh;
+}
+
+.main {
+  transform: translateX(-400%);
+  height: 500px;
+  transition: all 0.5s;
+  width: 200px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  opacity: 0.9;
+  position: fixed;
+  margin-bottom: 20px;
+}
+
+.main::-webkit-scrollbar {
+  width: 0;
+}
+
+.card {
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.card h4 {
+  text-align: center;
+}
+
+.card:hover {
+  border: 2px solid white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  color: #0c5460;
+  background-color: white;
+}
+
+.card h4:hover {
+  color: #0c5460;
+}
+
+.button-select {
+  width: 200px;
+  height: 50px;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  margin: 14px;
+}
+
+.button-select:hover {
+  cursor: pointer;
+}
+
+.search-form {
+  opacity: 0;
+}
+
+.search-form.active {
+  opacity: 1;
+}
+
+.image-gallery {
+  display: none;
+}
+
+.search-input {
+  color: #0c5460;
+  height: 50px;
+  width: 200px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: none;
+  margin: 14px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  caret-color: transparent;
+  outline: none;
+}
+
+@media (min-width: 600px) {
+  body {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .wrapper {
+    display: block;
+    position: relative;
+    width: 700px;
+  }
+
+  .weather-part {
+    padding-left: 300px;
+  }
+
+  .wrapper.active-desktop {
+    display: block;
+  }
+
+  .video-background {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper header {
+    padding-top: 40px;
+    padding-left: 400px;
+    border-bottom: none;
+  }
+
+  .wrapper.active-desktop .weather-part {
+    display: flex;
+  }
+
+  .wrapper .input-part {
+    padding-left: 400px;
+  }
+
+  .main.active {
+    height: 60vh;
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .wrapper {
+    display: block;
+    position: relative;
+    width: 900px;
+  }
+
+  .weather-part {
+    padding-left: 400px;
+  }
+
+  .wrapper.active-desktop {
+    display: block;
+  }
+
+  .video-background {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper header {
+    padding-top: 40px;
+    padding-left: 400px;
+    border-bottom: none;
+  }
+
+  .wrapper.active-desktop .weather-part {
+    display: flex;
+  }
+
+  .wrapper .input-part {
+    padding-left: 400px;
+  }
+
+  .main.active {
+    height: 60vh;
+  }
+
+  .image-gallery {
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-comune {
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-comune:hover {
+    opacity: 1;
+    width: 110px;
+    height: 110px;
+  }
+
+  .card-gallery {
+    width: 110px;
+    height: 110px;
+    margin: 10px;
+    box-shadow: 0 0 15px 4px rgba(32, 32, 32, 0.5);
+    border-radius: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    opacity: 0.8;
+  }
+
+  .card-gallery img {
+    object-fit: cover;
+  }
+}

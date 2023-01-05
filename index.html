@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Weather App provincia di Catania</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Linking BoxIcon for Icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="video-background">
+      <video
+        src="./background/rain.mp4"
+        class="rain-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+      <video
+        src="./background/clear.mp4"
+        class="clear-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+      <video
+        src="./background/cloud.mp4"
+        class="cloud-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+      <video
+        src="./background/snow.mp4"
+        class="snow-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+      <video
+        src="./background/haze.mp4"
+        class="haze-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+      <video
+        src="./background/storm.mp4"
+        class="storm-background"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="yes"
+      ></video>
+    </div>
+    <div>
+      <!--div added for side gallery -->
+      <div class="wrapper">
+        <header>
+          <i class="bx bx-left-arrow-alt"></i>Weather Province Catania
+        </header>
+        <button class="button-select">Scegli comune</button>
+        <form spellcheck="false" class="search-form" autocomplete="off">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            class="search-input"
+            type="text"
+            placeholder=" 🔍︎ Cerca comune..."
+          />
+        </form>
+        <div class="main"></div>
+        <section class="input-part">
+          <p class="info-txt"></p>
+          <div class="content"></div>
+        </section>
+        <section class="weather-part">
+          <img src="" alt="Weather Icon" />
+          <div class="temp">
+            <span class="numb">_</span>
+            <span class="deg">°</span>C
+          </div>
+          <div class="weather">_ _</div>
+          <div class="location">
+            <i class="bx bx-map"></i>
+            <span>_, _</span>
+          </div>
+          <div class="bottom-details">
+            <div class="column feels">
+              <i class="bx bxs-thermometer"></i>
+              <div class="details">
+                <div class="temp">
+                  <span class="numb-2">_</span>
+                  <span class="deg">°</span>C
+                </div>
+                <p>Feels like</p>
+              </div>
+            </div>
+            <div class="column humidity">
+              <i class="bx bxs-droplet-half"></i>
+              <div class="details">
+                <span>_</span>
+                <p>Humidity</p>
+              </div>
+            </div>
+            <div class="column pressure">
+              <i class="bx bxs-arrow-to-bottom"></i>
+              <div class="details">
+                <div class="pres">
+                  <span class="numb-2">_</span>
+                </div>
+                <p>Pressure</p>
+              </div>
+            </div>
+            <div class="column wind-speed">
+              <i class="bx bx-wind"></i>
+              <div class="details">
+                <span>_</span>
+                <p>Wind speed</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- closed div added for side gallery -->
+    <div class="image-gallery"></div>
+    <script src="script.js" type="module"></script>
+    <script src="data.js" type="module"></script>
+    <script src="utils.js" type="module"></script>
+  </body>
+</html>
