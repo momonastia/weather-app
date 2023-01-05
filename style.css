@@ -5,7 +5,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   color: white;
-  transition: all 1s;
+  transition: all 0.9s;
 }
 body {
   display: flex;
