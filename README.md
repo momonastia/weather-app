@@ -19,7 +19,7 @@
   <div style="display: flex; gap: 5rem;  flex-direction: row;
         align-items: center; justify-content: center;">
    <img src='https://i.postimg.cc/DyRpvx8t/mobile-4.png' style="height: 300px; padding: 10px; margin: 20px;" /> 
-   <img src='https://i.postimg.cc/gcQ1jz7S/mobile-5.png' style="height: 300px; padding: 20px; margin: 20px;" /> 
+   <img src='https://i.postimg.cc/gcQ1jz7S/mobile-5.png' style="height: 300px; padding: 10px; margin: 20px;" /> 
  
   </div>
 </div>      
