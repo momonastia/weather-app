@@ -7,7 +7,7 @@
 
 <div>
   <h3 align="left">Description</h3>
-    <p  align="left"> Simple weather application that provides for user the weather details of each of 58 Catania Province comunes </p>
+    <p  align="left"> Simple weather application that provides for user the weather details of each of 58 Catania Province comunes. Made with vanilla JS </p>
     <p  align="left"> Weather API: https://openweathermap.org/api </p>
    <br>
     
